@@ -1,0 +1,15 @@
+GET http://localhost:8080 HTTP/1.1
+###
+POST http://localhost:8080 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"Hasanboy",
+    "lastname":"Aburasulov",
+    "email":"hasanbojabdurasulov309@gmail.com",
+    "password":"919928473",
+    "country":"Uzbekistan",
+    "gender":"Male"
+}
+###
+DELETE http://localhost:8080/4 HTTP/1.1
