@@ -46,13 +46,13 @@ server.post("/info", async (req: Request, res: Response) => {
             }
         }
         if (arr.length == 0) {
-            res.render("")
+            res.render("error", { error: "Your account hasn't fount you must Register" })
         } else {
             const user = arr[0]
             res.render("info", { user })
         }
-    } catch (error) {
-        res.render("")
+    } catch (error: any) {
+        res.render("error", { error: error.message })
     }
 })
 server.get("/info", (req: Request, res: Response) => {

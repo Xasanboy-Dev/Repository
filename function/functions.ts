@@ -16,14 +16,15 @@ export const postMethod = async (req: Request, res: Response) => {
         let arr: any = []
         for (let r in allusers) {
             let d = allusers[r]
-            if (d.name == name && d.lastname == lastname && d.email == email && d.password == password && d.country == country && d.gender == gender) {
+            if (d.name == name && d.lastname == lastname && d.email == email && d.password == password) {
                 arr.push(d)
             }
         }
-        const user = await pool.query(`SELECT * FROM xasanboy`)
+        let user: any = await pool.query(`SELECT * FROM xasanboy`)
         if (arr.length == 0) {
             await pool.query(`INSERT INTO xasanboy (name,lastname,email,password,country,gender) VALUES ($1,$2,$3,$4,$5,$6)`, [name, lastname, email, password, country, gender])
-            res.render("users", { user })
+            user = (await pool.query(`SELECT * FROM xasanboy`)).rows
+            res.render("index", { user })
         } else {
             res.status(400).json({ message: "You have already registered!" })
         }
