@@ -1,0 +1,44 @@
+<%- include("head")%>
+    <div class="d-flex justify-content-center mt-5 pt-5">
+        <div class="w-25 card p-5 bg-warning">
+            <form action="/info" method="post">
+                <div class="form-outline mb-4">
+                    <input type="text" name="name" id="form2Example2" class="form-control" />
+                    <label class="form-label" for="Name">Name</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" name="lastname" id="form2Example2" class="form-control" />
+                    <label class="form-label" for="lastname">Password</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="email" name="email" id="form2Example1" class="form-control" />
+                    <label class="form-label" for="form2Example1">Email address</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="password" name="password" id="form2Example2" class="form-control" />
+                    <label class="form-label" for="form2Example2">Password</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mb-4"><a>Sign in</a></button>
+                <div class="text-center">
+                    <p>Not a member? <a href="/register">Register</a></p>
+                    <p>or sign up with:</p>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-google"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-github"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <%- include("footer")%>

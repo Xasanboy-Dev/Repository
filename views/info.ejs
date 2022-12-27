@@ -1,0 +1,33 @@
+<%- include("head")%>
+    <div class="card bg-primary">
+        <% for(let i in user){%>
+            <div class="d-flex">
+                <label>Name: </label>
+                <input type="text" value="<%= user[r].name%>">
+            </div>
+            <div class="d-flex">
+                <label>Lastname: </label>
+                <input type="text" value="<%= user[r].lastname%>">
+            </div>
+            <div class="d-flex">
+                <label>Email: </label>
+                <input type="text" value="<%= user[r].email%>">
+            </div>
+            <div class="d-flex">
+                <label>Password: </label>
+                <input type="password" value="<%= user[r].password%>">
+            </div>
+            <div class="d-flex">
+                <label>Country: </label>
+                <input type="text" value="<%= user[r].country%>">
+            </div>
+            <div class="d-flex">
+                <label>Gender: </label>
+                <select name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <%}%>
+    </div>
+    <- inlude("footer")%>

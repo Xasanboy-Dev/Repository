@@ -20,9 +20,10 @@ export const postMethod = async (req: Request, res: Response) => {
                 arr.push(d)
             }
         }
+        const user = await pool.query(`SELECT * FROM xasanboy`)
         if (arr.length == 0) {
             await pool.query(`INSERT INTO xasanboy (name,lastname,email,password,country,gender) VALUES ($1,$2,$3,$4,$5,$6)`, [name, lastname, email, password, country, gender])
-            res.status(201).json({ message: "You have Registerd!" })
+            res.render("users", { user })
         } else {
             res.status(400).json({ message: "You have already registered!" })
         }

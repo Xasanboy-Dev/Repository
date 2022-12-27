@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express"
-import ejs from "ejs"
 import { getMethod, postMethod, deleteMethod } from "./function/functions"
 import { pool } from "./config/db"
+import { read } from "fs"
 const server = express()
 server.set("view engine", "ejs")
 const PORT = 8080
@@ -21,9 +21,47 @@ server.get("/users", async (req: Request, res: Response) => {
         res.render("error", { error: error.message })
     }
 })
-server.get("/register",(req:Request,res:Response)=>{
-    res.render("register")
+server.get("/register", (req: Request, res: Response) => {
+    try {
+        res.render("register")
+    } catch (error: any) {
+        res.render("")
+    }
 })
+server.get("/login", (req: Request, res: Response) => {
+    try {
+        res.render("login")
+    } catch (error) {
+        res.render("")
+    }
+})
+server.post("/info", async (req: Request, res: Response) => {
+    try {
+        const { email, name, password, lastname } = req.body
+        const allusers = (await pool.query(`SELECT * FROM xasanboy`)).rows
+        let arr: any = []
+        for (let r in allusers) {
+            if (allusers[r].email == email && allusers[r].name == name && allusers[r].password == password && allusers[r].lastname == lastname) {
+                arr.push(allusers[r])
+            }
+        }
+        if (arr.length == 0) {
+            res.render("")
+        } else {
+            const user = arr[0]
+            res.render("info", { user })
+        }
+    } catch (error) {
+        res.render("")
+    }
+})
+server.get("/info", (req: Request, res: Response) => {
+    try {
+    } catch (error) {
+        res.render("")
+    }
+})
+server.post("/register", postMethod)
 server.listen(PORT, () => {
     console.log(`Server: http://localhost:${PORT}`)
 })
